@@ -1,0 +1,125 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000;
+}
+
+.cube{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    transform-style: preserve-3d;
+    transform: rotateX(-30deg);
+    animation: animacion 12s linear infinite;
+}
+
+@keyframes animacion {
+    0%{
+        transform: rotateX(-30deg) rotateY(0deg);
+        width: 150px;
+        height: 150px;
+    }
+
+    50%{
+        width: 300px;
+        height: 300px;
+    }
+
+    100%{
+        transform: rotateX(-30deg) rotateY(360deg);
+        width: 150px;
+        height: 150px;
+    }
+}
+
+.cube div{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.cube div span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#151515, #00ec00);
+    transform: rotateY(calc(90deg * var(--i))) translateZ(150px);
+}
+
+.top{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    background: #222;
+    transform: rotateX(90deg) translateZ(150px);
+    font-size: 50px;
+}
+
+.top::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    background: #0f0;
+    transform: translateZ(-400px);
+    filter: blur(20px);
+    box-shadow: 0 0 120px rgba(0,255,0, 0.2),
+    0 0 200px rgba(0,255,0,0.4),
+    0 0 200px rgba(0,255,0,0.6),
+    0 0 200px rgba(0,255,0,0.8),
+    0 0 200px rgba(0,255,0,1);
+}
+
+@media screen and (max-width: 425px){
+    @keyframes animacion {
+        0%{
+            transform: rotateX(-30deg) rotateY(0deg);
+            width: 75px;
+            height: 75px;
+        }
+    
+        50%{
+            width: 150px;
+            height: 150px;
+        }
+    
+        100%{
+            transform: rotateX(-30deg) rotateY(360deg);
+            width: 75px;
+            height: 75px;
+        }
+    }
+    .top{
+        width: 75px;
+        height: 75px;
+        transform: rotateX(90deg) translateZ(75px);
+    }
+    .cube div span{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(#151515, #00ec00);
+        transform: rotateY(calc(90deg * var(--i))) translateZ(75px);
+    }
+    
+    
+}
